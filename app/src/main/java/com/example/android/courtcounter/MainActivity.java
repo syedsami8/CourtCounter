@@ -2,16 +2,20 @@ package com.example.android.courtcounter;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        displayForTeamA(8);
     }
 
     @Override
@@ -34,5 +38,18 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void plus3(View view){
+        displayForTeamA(3);
+    }
+    public void plus2(View view){
+        displayForTeamA(2);
+    }
+    public void Freethrow(View view){
+        displayForTeamA(1);
+    }
+    public void displayForTeamA(int score) {
+        TextView scoreView = (TextView) findViewById(R.id.team_a_score);
+        scoreView.setText(String.valueOf(score));
     }
 }
