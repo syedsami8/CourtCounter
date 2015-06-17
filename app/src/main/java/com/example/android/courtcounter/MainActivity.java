@@ -1,6 +1,5 @@
 package com.example.android.courtcounter;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -11,11 +10,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    int scoreTeamA = 0 , scoreTeamB=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        displayForTeamA(8);
+        displayForTeamA(scoreTeamA);
+        displayForTeamB(scoreTeamB);
     }
 
     @Override
@@ -39,17 +41,46 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void plus3(View view){
-        displayForTeamA(3);
+    public void plus3_a(View view){
+        scoreTeamA = scoreTeamA + 3;
+        displayForTeamA(scoreTeamA);
     }
-    public void plus2(View view){
-        displayForTeamA(2);
+    public void plus2_a(View view){
+        scoreTeamA = scoreTeamA + 2;
+        displayForTeamA(scoreTeamA);
     }
-    public void Freethrow(View view){
-        displayForTeamA(1);
+    public void Freethrow_a(View view){
+        scoreTeamA++;
+        displayForTeamA(scoreTeamA);
+    }
+
+    //scoreTeamB methods
+    public void plus3_b(View view){
+        scoreTeamB = scoreTeamB + 3;
+        displayForTeamB(scoreTeamB);
+    }
+    public void plus2_b(View view){
+        scoreTeamB = scoreTeamB + 2;
+        displayForTeamB(scoreTeamB);
+    }
+    public void Freethrow_b(View view){
+        scoreTeamB++;
+        displayForTeamB(scoreTeamB);
     }
     public void displayForTeamA(int score) {
-        TextView scoreView = (TextView) findViewById(R.id.team_a_score);
-        scoreView.setText(String.valueOf(score));
+        TextView scoreView_a = (TextView) findViewById(R.id.team_a_score);
+        scoreView_a.setText(String.valueOf(score));
+    }
+    public void displayForTeamB(int score) {
+        TextView scoreView_b = (TextView) findViewById(R.id.team_b_score);
+        scoreView_b.setText(String.valueOf(score));
+    }
+
+    //reset
+    public void reset(View view){
+        displayForTeamA(0);
+        displayForTeamB(0);
+        scoreTeamA = 0;
+        scoreTeamB = 0;
     }
 }
